@@ -33,7 +33,7 @@ def get_redis():
     if not hasattr(g, 'redis'):
         g.redis = Redis(host="redis", db=0, password=redis_password, socket_timeout=5, decode_responses=True)
 
-    is_redis_available(g)
+    is_redis_available(g.redis)
     return g.redis
 
 @app.route("/")
