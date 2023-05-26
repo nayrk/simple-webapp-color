@@ -34,7 +34,7 @@ def get_redis():
         print("Connecting to redis db")
         g.redis = Redis(host="redis-2", db=0, password=redis_password, socket_timeout=5, decode_responses=True)
 
-    is_redis_available(g.redis)
+    #is_redis_available(g.redis)
     return g.redis
 
 @app.route("/")
