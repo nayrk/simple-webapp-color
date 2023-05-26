@@ -1,6 +1,5 @@
 import os
-from flask import Flask
-from flask import render_template, g
+from flask import Flask, render_template, request, make_response, g
 from redis import Redis
 import socket
 import random
@@ -19,9 +18,11 @@ color_codes = {
 
 color = os.environ.get('APP_COLOR') or random.choice(["red","green","blue","blue2","darkblue","pink"])
 
+redis_password = os.getenv('REDIS_PASSWORD', 'redis_password')
+
 def get_redis():
     if not hasattr(g, 'redis'):
-        g.redis = Redis(host="redis", db=0, socket_timeout=5)
+        g.redis = Redis(host="redis", db=0, password=redis_password, socket_timeout=5)
     return g.redis
 
 @app.route("/")
