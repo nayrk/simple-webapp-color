@@ -30,11 +30,12 @@ def is_redis_available(r):
     return True
 
 def get_redis():
-    if not hasattr(g, 'redis'):
-        if is_redis_available(g):
-            print("Yay!")
-        else:
-            g.redis = Redis(host="redis-test", db=0, password=redis_password, socket_timeout=5, decode_responses=True)
+    g.redis = Redis(host="redis-test", db=0, password=redis_password, socket_timeout=5, decode_responses=True)
+    if is_redis_available(g):
+        print("Yay!")
+    else:
+        print("Reconnecting to redis")
+        g.redis = Redis(host="redis-test", db=0, password=redis_password, socket_timeout=5, decode_responses=True)
     return g.redis
 
 @app.route("/")
