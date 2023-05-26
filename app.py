@@ -33,7 +33,7 @@ def main():
 
 @app.route('/redis')
 def redis():
-    redis = get_redis()
+    g = get_redis()
     g.rpush("test","run")
     g.get("test")
 
