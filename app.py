@@ -34,7 +34,7 @@ def main():
 @app.route('/redis')
 def redis():
     g = get_redis()
-    g.rpush("test","run")
+    g.set("test","run")
     g.get("test")
 
 @app.route('/color/<new_color>')
