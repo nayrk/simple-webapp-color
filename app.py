@@ -31,7 +31,7 @@ def is_redis_available(r):
 
 def get_redis():
     if not hasattr(g, 'redis'):
-        if is_redis_available(r):
+        if is_redis_available(g):
             print("Yay!")
         else:
             g.redis = Redis(host="redis-test", db=0, password=redis_password, socket_timeout=5, decode_responses=True)
