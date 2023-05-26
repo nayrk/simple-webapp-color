@@ -35,8 +35,8 @@ def main():
 def redis():
     g = get_redis()
     g.set("test","run")
-    f = open("/data/testfile.txt")
-    contents = f.write(g.get("test))
+    f = open("/data/testfile.txt", "a")
+    contents = f.write(g.get("test"))
     return render_template('hello.html', name=socket.gethostname(), contents=contents, color=color_codes[color])
 
 @app.route('/color/<new_color>')
