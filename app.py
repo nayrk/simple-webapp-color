@@ -20,9 +20,9 @@ color = os.environ.get('APP_COLOR') or random.choice(["red","green","blue","blue
 
 redis_password = os.getenv('REDIS_PASSWORD', 'derp')
 
-def is_redis_available(r):
+def is_redis_available(g):
     try:
-        r.ping()
+        g.ping()
         print("Successfully connected to redis")
     except (redis.exceptions.ConnectionError, ConnectionRefusedError):
         print("Redis connection error!")
@@ -30,12 +30,12 @@ def is_redis_available(r):
     return True
 
 def get_redis():
-    g.redis = Redis(host="redis-test", db=0, password=redis_password, socket_timeout=5, decode_responses=True)
+    g.redis = Redis(host="redis", db=0, password=redis_password, socket_timeout=5, decode_responses=True)
     if is_redis_available(g):
         print("Yay!")
     else:
         print("Reconnecting to redis")
-        g.redis = Redis(host="redis-test", db=0, password=redis_password, socket_timeout=5, decode_responses=True)
+        g.redis = Redis(host="redist", db=0, password=redis_password, socket_timeout=5, decode_responses=True)
     return g.redis
 
 @app.route("/")
