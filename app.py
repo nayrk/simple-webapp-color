@@ -18,7 +18,7 @@ color_codes = {
 
 color = os.environ.get('APP_COLOR') or random.choice(["red","green","blue","blue2","darkblue","pink"])
 
-redis_password = os.getenv('REDIS_PASSWORD', 'redis_password')
+redis_password = os.getenv('REDIS_PASSWORD', 'derp')
 
 def get_redis():
     if not hasattr(g, 'redis'):
