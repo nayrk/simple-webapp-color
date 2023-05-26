@@ -35,7 +35,7 @@ def main():
 def redis():
     g = get_redis()
     g.set("test","run")
-    g.get("test")
+    print(g.get("test"))
 
 @app.route('/color/<new_color>')
 def new_color(new_color):
