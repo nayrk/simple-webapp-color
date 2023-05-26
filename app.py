@@ -35,7 +35,7 @@ def read_file():
     return render_template('hello.html', name=socket.gethostname(), contents=contents, color=color_codes[color])
 
 @app.route('/read_mounted_file')
-def read_file():
+def read_file_2():
     f = open("/data/testfile.txt")
     contents = f.read()
     return render_template('hello.html', name=socket.gethostname(), contents=contents, color=color_codes[color])
