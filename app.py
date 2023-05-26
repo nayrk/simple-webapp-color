@@ -1,6 +1,6 @@
 import os
 from flask import Flask
-from flask import render_template
+from flask import render_template, g
 from redis import Redis
 import socket
 import random
