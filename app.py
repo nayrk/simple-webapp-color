@@ -37,6 +37,8 @@ def redis():
     g.set("test","run")
     f = open("/data/testfile.txt", "a")
     f.write(g.get("test"))
+    f.close()
+    f = open("/data/testfile.txt")
     contents = f.read()
     return render_template('hello.html', name=socket.gethostname(), contents=contents, color=color_codes[color])
 
