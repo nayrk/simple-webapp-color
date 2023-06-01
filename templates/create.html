@@ -6,11 +6,11 @@
 		<label for="title">Title</label>
 		<br>
 		<input type="text" name="title"
-			placeholder="Enter Key"
+			placeholder="Enter Application Title"
 			value="{{ request.form['title'] }}"></input>
 		<br>
 
-		<label for="content">Message Content</label>
+		<label for="content">Justification Content</label>
 		<br>
 		<textarea name="content"
 			placeholder="Message Value"
@@ -18,6 +18,12 @@
 			cols="60"
 			>{{ request.form['content'] }}</textarea>
 		<br>
+		<label for="notes">Notes</label>
+		<textarea name="notes"
+			  placeholder="Additional notes"
+			  rows="5"
+			  cols="60"
+			>{{ request.form['zzz'] }}</textarea>
 		<button type="submit">Submit</button>
 	</form>
 {% endblock %}
