@@ -16,6 +16,8 @@ color_codes = {
     "darkblue": "#130f40"
 }
 
+messages = [{'title': 'Message One', 'content': 'Message One content'}, {'title': 'Message Two', 'content': 'Message Two Content'}]
+
 color = os.environ.get('APP_COLOR') or random.choice(["red","green","blue","blue2","darkblue","pink"])
 
 redis_password = os.getenv('REDIS_PASSWORD', 'derp')
@@ -69,6 +71,10 @@ def read_file_2():
     f = open("/data/testfile.txt")
     contents = f.read()
     return render_template('hello.html', name=socket.gethostname(), contents=contents, color=color_codes[color])
+
+@app.route('/create/', methods=('GET', 'POST'))
+def create():
+    return render_template('create.html')
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="8081")
