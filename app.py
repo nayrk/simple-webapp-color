@@ -17,7 +17,7 @@ color_codes = {
     "darkblue": "#130f40"
 }
 
-messages = [{'title': 'Message One', 'content': 'Message One content'}, {'title': 'Message Two', 'content': 'Message Two Content'}]
+messages = [{'title': 'Message One', 'content': 'Message One content', 'notes': 'Notes 1'}, {'title': 'Message Two', 'content': 'Message Two Content', 'notes': 'Notes 2'}]
 
 color = os.environ.get('APP_COLOR') or random.choice(["red","green","blue","blue2","darkblue","pink"])
 
@@ -89,7 +89,7 @@ def create():
         elif not content:
             flash('Content is required!')
         else:
-            messages.append({'title': title, 'content': content})
+            messages.append({'title': title, 'content': content, 'notes': notes})
             return redirect(url_for('index'))
 
     return render_template('create.html')
