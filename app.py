@@ -6,6 +6,7 @@ import random
 import os
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'derp')
 
 color_codes = {
     "red": "#e74c3c",
@@ -78,6 +79,19 @@ def read_file_2():
 
 @app.route('/create/', methods=('GET', 'POST'))
 def create():
+    if request.method == 'POST':
+        title = request.form['title']
+        content = request.form['content']
+        notes = request.form['notes']
+
+        if not title:
+            flash('Title is required!')
+        elif not content:
+            flash('Content is required!')
+        else:
+            messages.append({'title': title, 'content': content})
+            return redirect(url_for('index'))
+
     return render_template('create.html')
 
 if __name__ == "__main__":
