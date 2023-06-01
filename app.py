@@ -39,6 +39,10 @@ def get_redis():
     #is_redis_available(g.redis)
     return g.redis
 
+@app.route("/index")
+def index():
+    return render_template("index.html", messages=messages)
+
 @app.route("/")
 def main():
     #return 'Hello'
