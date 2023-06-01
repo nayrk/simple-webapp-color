@@ -10,7 +10,7 @@
 			value="{{ request.form['title'] }}"></input>
 		<br>
 
-		<label for="content">Justification Content</label>
+		<label for="content">Justification</label>
 		<br>
 		<textarea name="content"
 			placeholder="Message Value"
@@ -18,12 +18,14 @@
 			cols="60"
 			>{{ request.form['content'] }}</textarea>
 		<br>
-		<label for="notes">Notes</label>
+		<label for="notes">Additional Notes</label>
+		<br>
 		<textarea name="notes"
 			  placeholder="Additional notes"
 			  rows="5"
 			  cols="60"
 			>{{ request.form['zzz'] }}</textarea>
+		<br>
 		<button type="submit">Submit</button>
 	</form>
 {% endblock %}
