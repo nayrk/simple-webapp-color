@@ -60,8 +60,9 @@ def index():
 @app.route("/")
 def main():
     #return 'Hello'
-    print(color)
-    return render_template('hello.html', name=socket.gethostname(), color=color_codes[color])
+    #print(color)
+    return render_template("index.html", messages=messages)
+    #return render_template('index.html', name=socket.gethostname(), color=color_codes[color])
 
 @app.route('/redis/')
 def redis():
