@@ -8,7 +8,7 @@ import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'derp')
-app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_host=1)
+app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_host=1, x_proto=1)
 
 color_codes = {
     "red": "#e74c3c",
