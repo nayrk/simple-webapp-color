@@ -40,6 +40,12 @@ def get_redis():
     #is_redis_available(g.redis)
     return g.redis
 
+def write_redis(title, content, notes):
+    g = get_redis()
+    cont = content + notes
+    g.set(title,cont)
+    return true
+
 @app.route("/index")
 def index():
     return render_template("index.html", messages=messages)
@@ -88,6 +94,18 @@ def create():
             flash('Title is required!')
         elif not content:
             flash('Content is required!')
+        elif not notes:
+            flash('Notes is required!')
+        else:
+            messages.append({'title': title, 'content': content, 'notes': notes})
+            write_redis(title, content, notes)
+            flash('Stored info in redis!')
+            return redirect(url_for('index'))
+
+    return render_template('create.html')
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port="8081")
         else:
             messages.append({'title': title, 'content': content, 'notes': notes})
             return redirect(url_for('index'))
