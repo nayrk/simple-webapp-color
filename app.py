@@ -46,7 +46,7 @@ def write_redis(title, content, notes):
     g.set(title,cont)
 
     f = open("/data/testfile.txt", "a")
-    f.write(g.get(title))
+    f.write("Key: " + title + " Value: " + g.get(title))
     f.close()
 
     return True
