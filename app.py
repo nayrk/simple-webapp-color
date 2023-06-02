@@ -44,7 +44,7 @@ def write_redis(title, content, notes):
     g = get_redis()
     cont = content + notes
     g.set(title,cont)
-    return true
+    return True
 
 @app.route("/index")
 def index():
