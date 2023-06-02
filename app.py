@@ -1,12 +1,14 @@
 import os
 from flask import Flask, render_template, request, make_response, g, url_for, flash, redirect
 from redis import Redis
+from werkzeug.middleware.proxy_fix import ProxyFix
 import socket
 import random
 import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'derp')
+app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_host=1)
 
 color_codes = {
     "red": "#e74c3c",
