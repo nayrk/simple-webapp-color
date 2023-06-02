@@ -44,6 +44,11 @@ def write_redis(title, content, notes):
     g = get_redis()
     cont = content + notes
     g.set(title,cont)
+
+    f = open("/data/testfile.txt", "a")
+    f.write(g.get(title))
+    f.close()
+
     return True
 
 @app.route("/index")
@@ -59,12 +64,7 @@ def main():
 @app.route('/redis')
 def redis():
     g = get_redis()
-    g.set("test","run")
-    f = open("/data/testfile.txt", "a")
-    f.write(g.get("test"))
-    f.close()
-    f = open("/data/testfile.txt")
-    contents = f.read()
+    contents = g.ping()
     return render_template('hello.html', name=socket.gethostname(), contents=contents, color=color_codes[color])
 
 @app.route('/color/<new_color>')
